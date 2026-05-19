@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan 12 Semanas — Fuerza y Definición (40+)</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1D9E75;--green-dark:#0F6E56;--green-light:#E1F5EE;
+  --amber:#BA7517;--amber-light:#FAEEDA;
+  --blue:#185FA5;--blue-light:#E6F1FB;
+  --red:#A32D2D;--red-light:#FCEBEB;
+  --bg:#F2F4F7;--card:#fff;--border:#E2E8F0;
+  --text:#1A1A2E;--muted:#64748B;--subtle:#94A3B8;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#0a2e23 0%,#0f6e56 60%,#1D9E75 100%);padding:3rem 1.5rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero-eyebrow{font-family:'Syne',sans-serif;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.75rem}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(24px,5vw,40px);font-weight:700;color:#fff;line-height:1.15;margin-bottom:.75rem}
+.hero p{font-size:15px;color:rgba(255,255,255,.75);max-width:520px;margin:0 auto 1.5rem;line-height:1.65}
+.hero-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hbadge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:12px;font-weight:500;padding:5px 14px;border-radius:20px}
+
+/* ── LAYOUT ── */
+.page{max-width:900px;margin:0 auto;padding:2rem 1rem 4rem}
+
+/* ── PHASE NAV ── */
+.phase-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:2rem}
+.phase-btn{padding:1rem;border-radius:14px;border:2px solid var(--border);background:var(--card);cursor:pointer;text-align:left;transition:all .2s;font-family:'DM Sans',sans-serif}
+.phase-btn:hover{border-color:var(--green);background:var(--green-light)}
+.phase-btn.active{border-color:var(--green);background:var(--green-light)}
+.phase-btn .ph-label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:500;color:var(--muted);margin-bottom:4px}
+.phase-btn .ph-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:600;color:var(--text)}
+.phase-btn .ph-weeks{font-size:12px;color:var(--muted);margin-top:2px}
+.phase-btn.active .ph-label,.phase-btn.active .ph-title,.phase-btn.active .ph-weeks{color:var(--green-dark)}
+.phase-btn .ph-dot{width:8px;height:8px;border-radius:50%;background:var(--subtle);display:inline-block;margin-right:6px}
+.phase-btn.active .ph-dot{background:var(--green)}
+
+/* ── PHASE PANEL ── */
+.phase-panel{display:none}.phase-panel.active{display:block}
+
+/* ── PHASE INFO CARD ── */
+.phase-info{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:600px){.phase-info{grid-template-columns:1fr 1fr}}
+.pi-item{}
+.pi-label{font-size:11px;text-transform:uppercase;letter-spacing:.07em;font-weight:500;color:var(--subtle);margin-bottom:4px}
+.pi-val{font-size:14px;font-weight:500;color:var(--text)}
+.pi-val.green{color:var(--green-dark)}
+.pi-val.amber{color:var(--amber)}
+.pi-val.red{color:var(--red)}
+
+/* ── PROGRESSION BANNER ── */
+.prog-banner{border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:13px;line-height:1.6;border-left:4px solid}
+.prog-banner.green{background:var(--green-light);border-color:var(--green);color:var(--green-dark)}
+.prog-banner.amber{background:var(--amber-light);border-color:var(--amber);color:var(--amber)}
+.prog-banner.red{background:var(--red-light);border-color:var(--red);color:var(--red)}
+
+/* ── DAY TABS ── */
+.day-tabs{display:flex;gap:6px;margin-bottom:1.25rem;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.day-tabs::-webkit-scrollbar{display:none}
+.dtab{padding:8px 18px;border-radius:10px;border:1px solid var(--border);background:var(--card);font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'DM Sans',sans-serif;color:var(--muted)}
+.dtab.active{background:var(--green);color:#fff;border-color:var(--green)}
+.dtab:hover:not(.active){background:#f1f5f9;color:var(--text)}
+
+/* ── DAY PANEL ── */
+.day-content{display:none}.day-content.active{display:block}
+.day-header{margin-bottom:1.25rem}
+.day-header h3{font-family:'Syne',sans-serif;font-size:17px;font-weight:600;color:var(--text);margin-bottom:3px}
+.day-header p{font-size:13px;color:var(--muted);font-style:italic}
+
+/* ── EXERCISE CARDS GRID ── */
+.ex-grid{display:grid;gap:14px;margin-bottom:1.5rem}
+
+/* ── EXERCISE CARD ── */
+.ex-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:110px 1fr;transition:box-shadow .2s}
+.ex-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.07)}
+@media(max-width:520px){.ex-card{grid-template-columns:80px 1fr}}
+.ex-img{width:110px;height:100%;object-fit:cover;display:block;background:#f1f5f9}
+@media(max-width:520px){.ex-img{width:80px}}
+.ex-body{padding:.875rem 1rem}
+.ex-tags{display:flex;gap:6px;margin-bottom:6px;flex-wrap:wrap}
+.tag{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:6px}
+.tag.fuerza{background:var(--blue-light);color:var(--blue)}
+.tag.iso{background:var(--amber-light);color:var(--amber)}
+.tag.cardio{background:var(--green-light);color:var(--green-dark)}
+.ex-name{font-weight:500;font-size:14px;color:var(--text);margin-bottom:.5rem;line-height:1.35}
+.ex-meta{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:12px}
+.ex-meta-label{color:var(--subtle);font-weight:500}
+.ex-meta-val{color:var(--text)}
+.ex-tip{margin-top:.5rem;font-size:11.5px;color:var(--muted);font-style:italic;padding-top:.5rem;border-top:1px solid var(--border);line-height:1.5}
+
+/* ── CARDIO CARD ── */
+.cardio-card{background:var(--green-light);border:1px solid #9FE1CB;border-radius:14px;padding:1rem 1.25rem;display:flex;align-items:center;gap:14px}
+.cardio-icon{font-size:28px;flex-shrink:0}
+.cardio-card h4{font-size:14px;font-weight:500;color:var(--green-dark);margin-bottom:2px}
+.cardio-card p{font-size:12px;color:#0F6E56}
+
+/* ── WEEK SELECTOR ── */
+.week-selector{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1rem 1.25rem;margin-bottom:1.5rem}
+.week-selector label{font-size:12px;font-weight:500;color:var(--subtle);text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:.5rem}
+.week-selector select{width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--border);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);background:var(--bg);cursor:pointer}
+
+/* ── PROGRESS CHART ── */
+.progress-section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:2rem}
+.progress-section h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:600;margin-bottom:1rem;color:var(--text)}
+.prog-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.prog-label{font-size:12px;color:var(--muted);width:160px;flex-shrink:0}
+@media(max-width:520px){.prog-label{width:100px;font-size:11px}}
+.prog-bar-bg{flex:1;height:8px;background:#f1f5f9;border-radius:4px;overflow:hidden}
+.prog-bar-fill{height:100%;border-radius:4px;transition:width .6s ease}
+.prog-val{font-size:12px;font-weight:500;color:var(--text);width:50px;text-align:right;flex-shrink:0}
+
+/* ── DESCARGA WEEK TAG ── */
+.descarga-tag{display:inline-block;background:var(--amber-light);color:var(--amber);font-size:11px;font-weight:600;padding:2px 10px;border-radius:6px;margin-left:8px;vertical-align:middle}
+
+/* ── NOTA COACH ── */
+.coach-nota{background:linear-gradient(135deg,var(--green-light),#f0fff8);border:1px solid #9FE1CB;border-radius:14px;padding:1.25rem 1.5rem;margin-top:1.5rem;font-size:13.5px;color:var(--green-dark);line-height:1.7}
+.coach-nota strong{color:var(--green-dark);font-weight:600}
+
+@media(max-width:620px){
+  .phase-nav{grid-template-columns:1fr}
+  .phase-info{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">Plan personalizado · Gimnasio completo</div>
+  <h1>Fuerza y Definición<br>12 Semanas (40+)</h1>
+  <p>Pérdida de grasa, preservación muscular y progresión inteligente. Sin Smith, con protección lumbar y hombros.</p>
+  <div class="hero-badges">
+    <span class="hbadge">90–120 min/sesión</span>
+    <span class="hbadge">5 días/semana</span>
+    <span class="hbadge">3 fases · 4 semanas c/u</span>
+    <span class="hbadge">Descarga semana 4, 8 y 12</span>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- PROGRESS OVERVIEW -->
+  <div class="progress-section">
+    <h3>Progresión de las 12 semanas</h3>
+    <div class="prog-row">
+      <div class="prog-label">Volumen de trabajo</div>
+      <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:90%;background:var(--green)"></div></div>
+      <div class="prog-val">↑ Alto</div>
+    </div>
+    <div class="prog-row">
+      <div class="prog-label">Intensidad (RPE)</div>
+      <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:85%;background:var(--blue)"></div></div>
+      <div class="prog-val">↑ RPE 9</div>
+    </div>
+    <div class="prog-row">
+      <div class="prog-label">Cardio total/sesión</div>
+      <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:75%;background:var(--amber)"></div></div>
+      <div class="prog-val">↑ 35 min</div>
+    </div>
+    <div class="prog-row">
+      <div class="prog-label">Peso en ejercicios</div>
+      <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:80%;background:#D4537E"></div></div>
+      <div class="prog-val">+5–10%</div>
+    </div>
+  </div>
+
+  <!-- PHASE NAV -->
+  <div class="phase-nav">
+    <button class="phase-btn active" onclick="showPhase(0)">
+      <div class="ph-label"><span class="ph-dot"></span>Fase 1</div>
+      <div class="ph-title">Activación</div>
+      <div class="ph-weeks">Semanas 1–4 · RPE 7–8</div>
+    </button>
+    <button class="phase-btn" onclick="showPhase(1)">
+      <div class="ph-label"><span class="ph-dot"></span>Fase 2</div>
+      <div class="ph-title">Construcción</div>
+      <div class="ph-weeks">Semanas 5–8 · RPE 8–9</div>
+    </button>
+    <button class="phase-btn" onclick="showPhase(2)">
+      <div class="ph-label"><span class="ph-dot"></span>Fase 3</div>
+      <div class="ph-title">Intensificación</div>
+      <div class="ph-weeks">Semanas 9–12 · RPE 9–10</div>
+    </button>
+  </div>
+
+  <!-- ═══════════════ FASE 1 ═══════════════ -->
+  <div id="phase-0" class="phase-panel active">
+    <div class="phase-info">
+      <div class="pi-item"><div class="pi-label">Semanas</div><div class="pi-val">1 – 4</div></div>
+      <div class="pi-item"><div class="pi-label">Intensidad</div><div class="pi-val green">RPE 7–8</div></div>
+      <div class="pi-item"><div class="pi-label">Series base</div><div class="pi-val">3 series</div></div>
+      <div class="pi-item"><div class="pi-label">Progresión</div><div class="pi-val">+1 rep/semana</div></div>
+      <div class="pi-item"><div class="pi-label">Semana 4</div><div class="pi-val amber">Descarga 40%</div></div>
+      <div class="pi-item"><div class="pi-label">Cardio</div><div class="pi-val">20–25 min</div></div>
+    </div>
+    <div class="prog-banner green">
+      <strong>Objetivo fase 1:</strong> Aprender los patrones de movimiento, activar la mente-músculo y construir una base técnica sólida. Los pesos son moderados — la forma lo es todo. En la semana 4 bajás el peso un 40% y reducís a 2 series para recuperar.
+    </div>
+
+    <div class="week-selector">
+      <label>Semana de la fase</label>
+      <select onchange="updateWeekLabel(this, 0)">
+        <option value="1">Semana 1 — Base técnica · 3×10</option>
+        <option value="2">Semana 2 — +1 rep · 3×11</option>
+        <option value="3">Semana 3 — +1 rep · 3×12 (pico de carga)</option>
+        <option value="4">Semana 4 — DESCARGA · 2×10 al 60%</option>
+      </select>
+    </div>
+
+    <div class="day-tabs" id="tabs-0">
+      <button class="dtab active" onclick="showDay(0,'day0-0')">Día 1</button>
+      <button class="dtab" onclick="showDay(0,'day0-1')">Día 2</button>
+      <button class="dtab" onclick="showDay(0,'day0-2')">Día 3</button>
+      <button class="dtab" onclick="showDay(0,'day0-3')">Día 4</button>
+      <button class="dtab" onclick="showDay(0,'day0-4')">Día 5</button>
+    </div>
+
+    <!-- F1 D1 -->
+    <div id="day0-0" class="day-content active">
+      <div class="day-header"><h3>Día 1 — Tren Inferior (Énfasis cuádriceps)</h3><p>Piernas y cuádriceps — movimientos de empuje</p></div>
+      <div class="ex-grid">
+        <div class="ex-card">
+          <img class="ex-img" src="https://www.anytimefitness.com/wp-content/uploads/2022/04/Leg-Press.jpg" alt="Prensa de piernas" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Prensa de piernas (pies bajos)</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 10–12</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-1-1</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span>
+            </div>
+            <div class="ex-tip">Bajar lento 3 seg, pausa abajo, subir controlado. Pies bajos activa cuádriceps.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://weighttraining.guide/wp-content/uploads/2016/10/Dumbbell-Bulgarian-Split-Squat-1.png" alt="Zancadas búlgaras" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Zancadas búlgaras con mancuernas (tronco erguido)</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 10 c/lado</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-1</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span>
+            </div>
+            <div class="ex-tip">Pie trasero en banco. Tronco vertical para enfatizar cuádríceps. Rodilla no pasa la punta del pie.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://training.fit/wp-content/uploads/2020/03/beinstrecker.png" alt="Extensión de cuádriceps" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Extensión de cuádriceps en máquina</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 15</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-0-1 (hold 1 seg)</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span>
+            </div>
+            <div class="ex-tip">Aguantar 1 segundo con la pierna extendida. Sentir el quemón en el cuádriceps.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://www.inspireusafoundation.org/wp-content/uploads/2022/11/wall-sit-variations.jpg" alt="Goblet squat" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Goblet squat con mancuerna (NUEVO)</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 12</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-1-1</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span>
+            </div>
+            <div class="ex-tip">Mancuerna frente al pecho. Codos hacia adentro. Profundidad completa cuidando lumbar.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://www.inspireusafoundation.org/wp-content/uploads/2022/11/wall-sit-variations.jpg" alt="Silla isométrica" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag iso">Isométrico</span></div>
+            <div class="ex-name">Silla isométrica contra pared</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series</span><span class="ex-meta-val">3 × 45 seg</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span>
+            </div>
+            <div class="ex-tip">Espalda completamente plana contra la pared. 90° en rodillas. Respiración controlada.</div>
+          </div>
+        </div>
+      </div>
+      <div class="cardio-card">
+        <div class="cardio-icon">🚶</div>
+        <div>
+          <h4>Cardio: Caminata en cinta con inclinación</h4>
+          <p>25 min · 5–6% inclinación · Zona 2 (podés hablar pero cuesta)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- F1 D2 -->
+    <div id="day0-1" class="day-content">
+      <div class="day-header"><h3>Día 2 — Tren Superior (Tracción y empuje suave)</h3><p>Movimientos en plano escapular — cuidando hombros</p></div>
+      <div class="ex-grid">
+        <div class="ex-card">
+          <img class="ex-img" src="https://weighttraining.guide/wp-content/uploads/2016/10/cable-lat-pulldown-1.png" alt="Jalón al pecho" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Jalón al pecho (agarre neutro/ancho)</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10–12</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-0-1</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span>
+            </div>
+            <div class="ex-tip">Pecho afuera, escápulas bajando primero. No jalar con los brazos — iniciar con la espalda.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://weighttraining.guide/wp-content/uploads/2016/10/Seated-Cable-Row-2.png" alt="Remo con cable" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Remo con cable sentado (pecho apoyado)</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 12</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-1</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span>
+            </div>
+            <div class="ex-tip">Apoyo en el pecho para eliminar balanceo lumbar. Codos cerca del cuerpo al jalar.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://homegymreview.co.uk/wp-content/uploads/2022/05/Dumbbell-Neutral-Grip-Bench-Press-header.jpg" alt="Press mancuernas neutro" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Press con mancuernas (agarre neutro)</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 12</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-1-1</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span>
+            </div>
+            <div class="ex-tip">Palmas enfrentadas (agarre neutro). Reduce tensión en el hombro. Bajar hasta 90° de codo.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://homegymreview.co.uk/wp-content/uploads/2021/07/Cable-Lateral-Raise.jpg" alt="Elevaciones laterales cable" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Elevaciones laterales en cable (NUEVO)</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 15 c/lado</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-2</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span>
+            </div>
+            <div class="ex-tip">Cable da tensión constante en todo el rango. Bajar lento 2 seg. Codo ligeramente flexionado.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://fitnessvolt.com/wp-content/uploads/2022/08/forearm-plank-exercise.jpg" alt="Plancha" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag iso">Isométrico</span></div>
+            <div class="ex-name">Plancha frontal sobre antebrazos</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series</span><span class="ex-meta-val">4 × 40 seg</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">45 seg</span>
+            </div>
+            <div class="ex-tip">Pelvis neutra — ni caer ni subir. Activar glúteos y abdomen simultáneamente.</div>
+          </div>
+        </div>
+      </div>
+      <div class="cardio-card">
+        <div class="cardio-icon">🚴</div>
+        <div>
+          <h4>Cardio: Elíptica</h4>
+          <p>20 min · Ritmo moderado · Zona 2</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- F1 D3 -->
+    <div id="day0-2" class="day-content">
+      <div class="day-header"><h3>Día 3 — Tren Inferior (Énfasis glúteo e isquiotibiales)</h3><p>Cadena posterior — glúteos e isquios</p></div>
+      <div class="ex-grid">
+        <div class="ex-card">
+          <img class="ex-img" src="https://central.gymshark.com/cdn-cgi/image/width=960,format=auto,quality=80/https://central.gymshark.com/images/2021/April/how-to-barbell-hip-thrust-article-hero-mobile.jpg" alt="Hip thrust" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Hip thrust (empuje de cadera con barra/mancuerna)</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-2-1 (pausa arriba)</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span>
+            </div>
+            <div class="ex-tip">2 seg de pausa con cadera arriba apretando glúteos al máximo. Barbilla al pecho.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://angrylion.fitness/wp-content/uploads/2021/09/seated-leg-curl-1.png" alt="Curl femoral" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Curl femoral sentado o acostado</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 12–15</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-0-1</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">75 seg</span>
+            </div>
+            <div class="ex-tip">Bajar lento 3 seg. El curl sentado da mayor tensión en el isquio elongado.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://weighttraining.guide/wp-content/uploads/2016/10/dumbbell-romanian-deadlift.png" alt="Peso muerto rumano" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Peso muerto rumano con mancuernas</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 10</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">4-0-1</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span>
+            </div>
+            <div class="ex-tip">4 segundos bajando. Espalda neutra — no redondear. Las mancuernas deslizan por las piernas.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://homegymreview.co.uk/wp-content/uploads/2023/01/Single-Leg-Glute-Bridge.jpg" alt="Puente glúteo" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Sentadilla sumo con mancuerna (NUEVO)</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 12</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-1-1</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">75 seg</span>
+            </div>
+            <div class="ex-tip">Pies anchos, punta de pies hacia afuera. Mancuerna colgando entre piernas. Activa aductores y glúteos.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://homegymreview.co.uk/wp-content/uploads/2023/01/Single-Leg-Glute-Bridge.jpg" alt="Puente glúteo una pierna" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag iso">Isométrico</span></div>
+            <div class="ex-name">Puente de glúteo isométrico (una pierna)</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series</span><span class="ex-meta-val">3 × 30 seg/lado</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">45 seg</span>
+            </div>
+            <div class="ex-tip">Cadera bien arriba, bien apretada. Evitar que caiga la cadera contraria.</div>
+          </div>
+        </div>
+      </div>
+      <div class="cardio-card">
+        <div class="cardio-icon">🚶</div>
+        <div>
+          <h4>Cardio: Caminata rápida (plano)</h4>
+          <p>30 min · Ritmo sostenido · Recuperación activa</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- F1 D4 -->
+    <div id="day0-3" class="day-content">
+      <div class="day-header"><h3>Día 4 — Torso Completo y Brazos</h3><p>Empuje, tracción y aislamiento de brazos</p></div>
+      <div class="ex-grid">
+        <div class="ex-card">
+          <img class="ex-img" src="https://weighttraining.guide/wp-content/uploads/2018/11/cable-face-pull.png" alt="Face pulls" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Face pulls con cuerda (salud de hombros)</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 15</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-1</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span>
+            </div>
+            <div class="ex-tip">Cable a la altura de los ojos. Jalar hacia la cara, codos arriba. Fundamental para la salud del manguito rotador.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://weighttraining.guide/wp-content/uploads/2016/10/incline-dumbbell-bench-press.png" alt="Press inclinado" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Press inclinado con mancuernas</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 12</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-1-1</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span>
+            </div>
+            <div class="ex-tip">30–45° de inclinación. Codos a 45° del cuerpo para proteger el hombro.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://fitnessvolt.com/wp-content/uploads/2023/01/Barbell-Curl.jpg" alt="Curl de bíceps" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Curl de bíceps con barra EZ o mancuernas</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 12</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-2</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">75 seg</span>
+            </div>
+            <div class="ex-tip">Bajar lento 2 seg. Codos fijos al cuerpo. Sin balanceo del torso.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://fitnessvolt.com/wp-content/uploads/2022/08/tricep-rope-pushdown.jpg" alt="Extensión tríceps cuerda" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Extensión tríceps cuerda en cable</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 12</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-0-1</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span>
+            </div>
+            <div class="ex-tip">Abrir la cuerda al final para máxima contracción. Codos pegados al cuerpo durante todo el movimiento.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://www.mensjournal.com/wp-content/uploads/2021/03/dead-bug.jpg" alt="Dead bug" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag iso">Isométrico</span></div>
+            <div class="ex-name">Dead bug (isométrico dinámico)</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 12 controladas</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span>
+            </div>
+            <div class="ex-tip">Lumbar PEGADA al suelo en todo momento. Exhalar al bajar el brazo. Lento y controlado.</div>
+          </div>
+        </div>
+      </div>
+      <div class="cardio-card">
+        <div class="cardio-icon">🚴</div>
+        <div>
+          <h4>HIIT en bicicleta estática</h4>
+          <p>15 min · 30 seg fuerte / 60 seg suave · 5 rondas</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- F1 D5 -->
+    <div id="day0-4" class="day-content">
+      <div class="day-header"><h3>Día 5 — Full Body Bombeo y Retoque</h3><p>Volumen moderado, congestión muscular total</p></div>
+      <div class="ex-grid">
+        <div class="ex-card">
+          <img class="ex-img" src="https://www.anytimefitness.com/wp-content/uploads/2022/04/Leg-Press.jpg" alt="Prensa pies altos" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Prensa de piernas (pies altos — énfasis glúteo)</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 15</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-1</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">75 seg</span>
+            </div>
+            <div class="ex-tip">Pies en la parte alta de la plataforma, más separados. Activa glúteos y aductores.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://aleanlife.com/wp-content/uploads/2019/10/One-Arm-Dumbbell-Row-1024x702.jpg" alt="Remo una mano" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Remo a una mano con mancuerna</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 12 c/lado</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-1</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">75 seg</span>
+            </div>
+            <div class="ex-tip">Apoyo de rodilla y mano en el banco. Jalar el codo hacia arriba y atrás. Espalda paralela al suelo.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://www.bodybuilding.com/images/2022/june/machine-fly-pec-deck-header-v2-960x540.jpg" alt="Pec deck" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Aperturas en máquina (Pec Deck)</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 15</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-1-1</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span>
+            </div>
+            <div class="ex-tip">Pausa de 1 seg en el centro apretando el pecho. Volver lento 3 seg para el estiramiento.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://homegymreview.co.uk/wp-content/uploads/2021/07/Cable-Lateral-Raise.jpg" alt="Elevaciones frontales" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag fuerza">Fuerza</span></div>
+            <div class="ex-name">Elevaciones frontales con mancuerna (NUEVO)</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 12</span>
+              <span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-2</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span>
+            </div>
+            <div class="ex-tip">Subir hasta la altura del hombro. Bajar lento 2 seg. Sin balanceo del torso.</div>
+          </div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://www.sideplank.org/wp-content/uploads/2019/05/side-plank-exercise.jpg" alt="Plancha lateral" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body">
+            <div class="ex-tags"><span class="tag iso">Isométrico</span></div>
+            <div class="ex-name">Plancha lateral</div>
+            <div class="ex-meta">
+              <span class="ex-meta-label">Series</span><span class="ex-meta-val">3 × 30 seg/lado</span>
+              <span class="ex-meta-label">Descanso</span><span class="ex-meta-val">45 seg</span>
+            </div>
+            <div class="ex-tip">Cuerpo alineado de cabeza a pies. Cadera sin caer. Activar el oblicuo de apoyo.</div>
+          </div>
+        </div>
+      </div>
+      <div class="cardio-card">
+        <div class="cardio-icon">🚶</div>
+        <div>
+          <h4>Cardio: Caminata en cinta con pendiente</h4>
+          <p>30 min · 5–8% inclinación · Pace constante</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="coach-nota">
+      <strong>Coach — Fase 1 (Semanas 1–4):</strong> El foco es la técnica perfecta antes de cargar peso. Si en algún ejercicio no podés controlar la bajada (excéntrico), el peso está demasiado alto. La semana 4 es sagrada: bajá el peso y descansá — es cuando el cuerpo mejora.
+    </div>
+  </div><!-- end phase-0 -->
+
+  <!-- ═══════════════ FASE 2 ═══════════════ -->
+  <div id="phase-1" class="phase-panel">
+    <div class="phase-info">
+      <div class="pi-item"><div class="pi-label">Semanas</div><div class="pi-val">5 – 8</div></div>
+      <div class="pi-item"><div class="pi-label">Intensidad</div><div class="pi-val amber">RPE 8–9</div></div>
+      <div class="pi-item"><div class="pi-label">Series base</div><div class="pi-val">4 series</div></div>
+      <div class="pi-item"><div class="pi-label">Progresión</div><div class="pi-val">+2.5–5% peso/semana</div></div>
+      <div class="pi-item"><div class="pi-label">Semana 8</div><div class="pi-val amber">Descarga 40%</div></div>
+      <div class="pi-item"><div class="pi-label">Cardio</div><div class="pi-val">25–30 min</div></div>
+    </div>
+    <div class="prog-banner amber">
+      <strong>Objetivo fase 2:</strong> Aumentar el peso en todos los ejercicios entre un 5–10% respecto a la Fase 1. Subís de 3 a 4 series en los movimientos principales. El cardio aumenta 5 minutos. Empezás a sentir que el entrenamiento es genuinamente desafiante. La semana 8 es descarga obligatoria.
+    </div>
+
+    <div class="week-selector">
+      <label>Semana de la fase</label>
+      <select onchange="updateWeekLabel(this, 1)">
+        <option value="5">Semana 5 — Nueva base · 4×10 (+5% peso)</option>
+        <option value="6">Semana 6 — Progresión · 4×11</option>
+        <option value="7">Semana 7 — Pico · 4×12 (RPE 9)</option>
+        <option value="8">Semana 8 — DESCARGA · 2×10 al 60%</option>
+      </select>
+    </div>
+
+    <div class="day-tabs" id="tabs-1">
+      <button class="dtab active" onclick="showDay(1,'day1-0')">Día 1</button>
+      <button class="dtab" onclick="showDay(1,'day1-1')">Día 2</button>
+      <button class="dtab" onclick="showDay(1,'day1-2')">Día 3</button>
+      <button class="dtab" onclick="showDay(1,'day1-3')">Día 4</button>
+      <button class="dtab" onclick="showDay(1,'day1-4')">Día 5</button>
+    </div>
+
+    <div id="day1-0" class="day-content active">
+      <div class="day-header"><h3>Día 1 — Tren Inferior (Cuádriceps) · +5% peso</h3><p>Mismos ejercicios, mayor carga y volumen</p></div>
+      <div class="ex-grid">
+        <div class="ex-card">
+          <img class="ex-img" src="https://www.anytimefitness.com/wp-content/uploads/2022/04/Leg-Press.jpg" alt="Prensa" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Prensa de piernas (pies bajos)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10–12</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-1-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">2 min</span></div><div class="ex-tip">+5% de peso vs fase 1. Si completás 12 reps fácil, subí el peso la semana siguiente.</div></div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://weighttraining.guide/wp-content/uploads/2016/10/Dumbbell-Bulgarian-Split-Squat-1.png" alt="Búlgaras" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Zancadas búlgaras con mancuernas</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10 c/lado</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span></div><div class="ex-tip">Mancuernas más pesadas. Buscar que la última rep sea difícil pero técnica.</div></div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://training.fit/wp-content/uploads/2020/03/beinstrecker.png" alt="Extensión cuáds" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Extensión de cuádriceps</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 12–15</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span></div><div class="ex-tip">Aumentá una serie respecto a fase 1. Técnica de drop set en la última serie: bajá 20% de peso y hacé 8 reps más.</div></div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://homegymreview.co.uk/wp-content/uploads/2021/07/Dumbbell-Goblet-Squat.jpg" alt="Goblet squat" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Goblet squat con mancuerna</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-2-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span></div><div class="ex-tip">Pausa de 2 seg abajo. Mancuerna más pesada. Sentir tensión en cuádriceps en el fondo.</div></div>
+        </div>
+        <div class="ex-card">
+          <img class="ex-img" src="https://www.inspireusafoundation.org/wp-content/uploads/2022/11/wall-sit-variations.jpg" alt="Silla" onerror="this.style.background='#e2e8f0';this.src=''">
+          <div class="ex-body"><div class="ex-tags"><span class="tag iso">Isométrico</span></div><div class="ex-name">Silla isométrica contra pared</div><div class="ex-meta"><span class="ex-meta-label">Series</span><span class="ex-meta-val">3 × 60 seg</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span></div><div class="ex-tip">+15 segundos vs fase 1. Podés agregar una mancuerna sobre los muslos para incrementar la dificultad.</div></div>
+        </div>
+      </div>
+      <div class="cardio-card"><div class="cardio-icon">🚶</div><div><h4>Cardio: Caminata en cinta con inclinación</h4><p>30 min · 6–8% inclinación · Zona 2</p></div></div>
+    </div>
+
+    <div id="day1-1" class="day-content">
+      <div class="day-header"><h3>Día 2 — Tren Superior (Tracción y empuje) · +5% peso</h3><p>Mayor carga, misma técnica impecable</p></div>
+      <div class="ex-grid">
+        <div class="ex-card"><img class="ex-img" src="https://weighttraining.guide/wp-content/uploads/2016/10/cable-lat-pulldown-1.png" alt="Jalón" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Jalón al pecho (agarre neutro)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10–12</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-1-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">2 min</span></div><div class="ex-tip">+5% de peso. En la última serie, hacé una pausa de 2 seg con el agarre abajo para mayor activación dorsal.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://weighttraining.guide/wp-content/uploads/2016/10/Seated-Cable-Row-2.png" alt="Remo cable" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Remo con cable sentado (pecho apoyado)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10–12</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-2-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span></div><div class="ex-tip">Pausa de 2 seg al final del recorrido, escápulas bien juntas.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://homegymreview.co.uk/wp-content/uploads/2022/05/Dumbbell-Neutral-Grip-Bench-Press-header.jpg" alt="Press neutro" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Press con mancuernas (agarre neutro)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10–12</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-1-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span></div><div class="ex-tip">+5% de peso. Codos a 45°. Si hay molestia en el hombro, reducí el rango de bajada.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://homegymreview.co.uk/wp-content/uploads/2021/07/Cable-Lateral-Raise.jpg" alt="Elevaciones cable" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Elevaciones laterales en cable</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 12 c/lado</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-2</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span></div><div class="ex-tip">Más control en la bajada. Podés hacer la variante bilateral con dos cables simultáneos.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://fitnessvolt.com/wp-content/uploads/2022/08/forearm-plank-exercise.jpg" alt="Plancha" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag iso">Isométrico</span></div><div class="ex-name">Plancha frontal sobre antebrazos</div><div class="ex-meta"><span class="ex-meta-label">Series</span><span class="ex-meta-val">4 × 50 seg</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">45 seg</span></div><div class="ex-tip">+10 segundos vs fase 1. Podés agregar una elevación de pierna alterna para mayor dificultad.</div></div></div>
+      </div>
+      <div class="cardio-card"><div class="cardio-icon">🏃</div><div><h4>Cardio: Elíptica o caminata rápida</h4><p>25 min · Zona 2 constante</p></div></div>
+    </div>
+
+    <div id="day1-2" class="day-content">
+      <div class="day-header"><h3>Día 3 — Tren Inferior (Glúteo e isquios) · +5% peso</h3><p>Cadena posterior con mayor carga</p></div>
+      <div class="ex-grid">
+        <div class="ex-card"><img class="ex-img" src="https://central.gymshark.com/cdn-cgi/image/width=960,format=auto,quality=80/https://central.gymshark.com/images/2021/April/how-to-barbell-hip-thrust-article-hero-mobile.jpg" alt="Hip thrust" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Hip thrust (barra o mancuerna)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10–12</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-2-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">2 min</span></div><div class="ex-tip">+5% de peso. La pausa de 2 seg arriba es obligatoria. Es el ejercicio rey del glúteo.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://angrylion.fitness/wp-content/uploads/2021/09/seated-leg-curl-1.png" alt="Curl femoral" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Curl femoral sentado</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 12</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-1-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">75 seg</span></div><div class="ex-tip">Excéntrico lento de 3 seg. En la semana 7, hacé la última serie con pausa de 2 seg en el punto de máxima flexión.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://weighttraining.guide/wp-content/uploads/2016/10/dumbbell-romanian-deadlift.png" alt="RDL" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Peso muerto rumano con mancuernas</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">4-0-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">2 min</span></div><div class="ex-tip">+5% de peso. Podés progresar a mancuernas más grandes o usar la barra libre esta fase.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://homegymreview.co.uk/wp-content/uploads/2023/01/Single-Leg-Glute-Bridge.jpg" alt="Sumo" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Sentadilla sumo con mancuerna</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 12</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-1-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span></div><div class="ex-tip">Mancuerna más pesada. Empujá las rodillas hacia afuera al subir para activar los aductores.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://homegymreview.co.uk/wp-content/uploads/2023/01/Single-Leg-Glute-Bridge.jpg" alt="Puente una pierna" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag iso">Isométrico</span></div><div class="ex-name">Puente glúteo isométrico (una pierna)</div><div class="ex-meta"><span class="ex-meta-label">Series</span><span class="ex-meta-val">3 × 40 seg/lado</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">45 seg</span></div><div class="ex-tip">+10 seg vs fase 1. Podés colocar una mancuerna sobre la cadera para aumentar la dificultad.</div></div></div>
+      </div>
+      <div class="cardio-card"><div class="cardio-icon">🚶</div><div><h4>Cardio: Caminata rápida</h4><p>30 min · Recuperación activa · Plano</p></div></div>
+    </div>
+
+    <div id="day1-3" class="day-content">
+      <div class="day-header"><h3>Día 4 — Torso y Brazos · +5% peso</h3><p>Mayor volumen en empuje y tracción</p></div>
+      <div class="ex-grid">
+        <div class="ex-card"><img class="ex-img" src="https://weighttraining.guide/wp-content/uploads/2018/11/cable-face-pull.png" alt="Face pull" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Face pulls con cuerda</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 15–20</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-2-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span></div><div class="ex-tip">Pausa de 2 seg al final con codos arriba. Rotación externa del hombro bien marcada.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://weighttraining.guide/wp-content/uploads/2016/10/incline-dumbbell-bench-press.png" alt="Press inclinado" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Press inclinado con mancuernas</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10–12</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-1-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span></div><div class="ex-tip">+5% de peso y una serie más vs fase 1. Podés hacer superserie con el remo a una mano.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://fitnessvolt.com/wp-content/uploads/2023/01/Barbell-Curl.jpg" alt="Curl biceps" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Curl de bíceps con barra EZ</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-3</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">75 seg</span></div><div class="ex-tip">Excéntrico de 3 seg al bajar. El negativo lento es donde más se genera hipertrofia.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://fitnessvolt.com/wp-content/uploads/2022/08/tricep-rope-pushdown.jpg" alt="Tríceps cuerda" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Extensión tríceps cuerda en cable</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10–12</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-2</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span></div><div class="ex-tip">+5% de peso. Abrir bien la cuerda al final. Hacer superserie con el curl de bíceps para ahorrar tiempo.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://www.mensjournal.com/wp-content/uploads/2021/03/dead-bug.jpg" alt="Dead bug" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag iso">Isométrico</span></div><div class="ex-name">Dead bug con pelota entre rodillas</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 15 controladas</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span></div><div class="ex-tip">Agregar pelota pequeña entre rodillas para activar el transverso del abdomen.</div></div></div>
+      </div>
+      <div class="cardio-card"><div class="cardio-icon">🚴</div><div><h4>HIIT en bicicleta estática</h4><p>20 min · 40 seg fuerte / 60 seg suave · 7 rondas</p></div></div>
+    </div>
+
+    <div id="day1-4" class="day-content">
+      <div class="day-header"><h3>Día 5 — Full Body Bombeo · Mayor densidad</h3><p>Más volumen, menos descanso entre series</p></div>
+      <div class="ex-grid">
+        <div class="ex-card"><img class="ex-img" src="https://www.anytimefitness.com/wp-content/uploads/2022/04/Leg-Press.jpg" alt="Prensa" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Prensa de piernas (pies altos)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 12–15</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">75 seg</span></div><div class="ex-tip">+5% de peso. Ritmo más fluido para el bombeo. Sentir el glúteo trabajar en cada rep.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://aleanlife.com/wp-content/uploads/2019/10/One-Arm-Dumbbell-Row-1024x702.jpg" alt="Remo" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Remo a una mano con mancuerna</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10 c/lado</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-2</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">75 seg</span></div><div class="ex-tip">+5% de peso. Excéntrico de 2 seg. Rango completo de movimiento escápula.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://www.bodybuilding.com/images/2022/june/machine-fly-pec-deck-header-v2-960x540.jpg" alt="Pec deck" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Aperturas en máquina (Pec Deck)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 12–15</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-2-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span></div><div class="ex-tip">+5% de peso. Pausa de 2 seg al cerrar. La última serie: 12 reps normales + 8 reps parciales en estiramiento.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://homegymreview.co.uk/wp-content/uploads/2021/07/Cable-Lateral-Raise.jpg" alt="Elevaciones frontales" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Elevaciones frontales alternas</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10 c/lado</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-2</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span></div><div class="ex-tip">Alternás brazos para mantener el trabajo constante. Bajar lento 2 seg.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://www.sideplank.org/wp-content/uploads/2019/05/side-plank-exercise.jpg" alt="Plancha lateral" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag iso">Isométrico</span></div><div class="ex-name">Plancha lateral con elevación de cadera</div><div class="ex-meta"><span class="ex-meta-label">Series</span><span class="ex-meta-val">3 × 40 seg/lado</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">45 seg</span></div><div class="ex-tip">Versión dinámica: bajar la cadera levemente y volver a subir cada 5 seg para mayor dificultad.</div></div></div>
+      </div>
+      <div class="cardio-card"><div class="cardio-icon">🚶</div><div><h4>Cardio: Caminata con pendiente</h4><p>30 min · 7–10% inclinación · Paso constante</p></div></div>
+    </div>
+
+    <div class="coach-nota">
+      <strong>Coach — Fase 2 (Semanas 5–8):</strong> Ya tenés la técnica. Ahora el foco es el peso. Subí 2.5 kg cuando completás todas las reps de todas las series con buena forma. Llevá un registro simple en el teléfono. La semana 8 es CLAVE para la recuperación — no la saltees aunque te sintás bien.
+    </div>
+  </div><!-- end phase-1 -->
+
+  <!-- ═══════════════ FASE 3 ═══════════════ -->
+  <div id="phase-2" class="phase-panel">
+    <div class="phase-info">
+      <div class="pi-item"><div class="pi-label">Semanas</div><div class="pi-val">9 – 12</div></div>
+      <div class="pi-item"><div class="pi-label">Intensidad</div><div class="pi-val red">RPE 9–10</div></div>
+      <div class="pi-item"><div class="pi-label">Series base</div><div class="pi-val">4–5 series</div></div>
+      <div class="pi-item"><div class="pi-label">Progresión</div><div class="pi-val">Drop sets + supersets</div></div>
+      <div class="pi-item"><div class="pi-label">Semana 12</div><div class="pi-val amber">Descarga final</div></div>
+      <div class="pi-item"><div class="pi-label">Cardio</div><div class="pi-val">30–35 min</div></div>
+    </div>
+    <div class="prog-banner red">
+      <strong>Objetivo fase 3:</strong> Intensificación máxima. Introducís técnicas avanzadas como drop sets, supersets y rest-pause. El peso es el más alto del ciclo completo (+10–15% vs fase 1). El cardio alcanza su pico. La semana 12 es la descarga final y deberías sentir un cambio visible en tu composición corporal.
+    </div>
+
+    <div class="week-selector">
+      <label>Semana de la fase</label>
+      <select onchange="updateWeekLabel(this, 2)">
+        <option value="9">Semana 9 — Intensidad máxima · 4×8 (RPE 9)</option>
+        <option value="10">Semana 10 — Drop sets en ejercicios principales</option>
+        <option value="11">Semana 11 — Supersets · Pico del ciclo completo</option>
+        <option value="12">Semana 12 — DESCARGA FINAL · 2×10 al 60%</option>
+      </select>
+    </div>
+
+    <div class="day-tabs" id="tabs-2">
+      <button class="dtab active" onclick="showDay(2,'day2-0')">Día 1</button>
+      <button class="dtab" onclick="showDay(2,'day2-1')">Día 2</button>
+      <button class="dtab" onclick="showDay(2,'day2-2')">Día 3</button>
+      <button class="dtab" onclick="showDay(2,'day2-3')">Día 4</button>
+      <button class="dtab" onclick="showDay(2,'day2-4')">Día 5</button>
+    </div>
+
+    <div id="day2-0" class="day-content active">
+      <div class="day-header"><h3>Día 1 — Tren Inferior (Cuádriceps) · Intensidad máxima</h3><p>Drop sets y mayor carga — RPE 9</p></div>
+      <div class="ex-grid">
+        <div class="ex-card"><img class="ex-img" src="https://www.anytimefitness.com/wp-content/uploads/2022/04/Leg-Press.jpg" alt="Prensa" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Prensa de piernas — Drop set</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 8 + drop 8</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-1-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">2 min</span></div><div class="ex-tip">+10% vs fase 1. En la última serie: 8 reps al máximo, bajá 20% el peso sin descanso y hacé 8 reps más.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://weighttraining.guide/wp-content/uploads/2016/10/Dumbbell-Bulgarian-Split-Squat-1.png" alt="Búlgaras" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Zancadas búlgaras (mancuernas máximas)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 8 c/lado</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-2-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">2 min</span></div><div class="ex-tip">Pausa de 2 seg abajo. Mancuernas al máximo tolerado con buena técnica. RPE 9.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://training.fit/wp-content/uploads/2020/03/beinstrecker.png" alt="Extensión" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Extensión de cuádriceps — Rest-pause</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 12 + 8 + 6</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">20 seg entre clusters</span></div><div class="ex-tip">Técnica rest-pause: 12 reps, pausa 20 seg, 8 reps, pausa 20 seg, 6 reps. Brutal para el cuádriceps.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://homegymreview.co.uk/wp-content/uploads/2021/07/Dumbbell-Goblet-Squat.jpg" alt="Goblet" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Goblet squat — Pausa profunda</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-3-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span></div><div class="ex-tip">3 seg de pausa en el fondo con tensión activa. Mancuerna más pesada posible con control.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://www.inspireusafoundation.org/wp-content/uploads/2022/11/wall-sit-variations.jpg" alt="Silla" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag iso">Isométrico</span></div><div class="ex-name">Silla isométrica con mancuernas</div><div class="ex-meta"><span class="ex-meta-label">Series</span><span class="ex-meta-val">3 × 75 seg</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">75 seg</span></div><div class="ex-tip">Mancuernas sobre los muslos para resistencia adicional. Máximo tiempo de tensión muscular.</div></div></div>
+      </div>
+      <div class="cardio-card"><div class="cardio-icon">🚶</div><div><h4>Cardio: Caminata en cinta · Inclinación máxima</h4><p>35 min · 10–12% inclinación · Zona 2–3</p></div></div>
+    </div>
+
+    <div id="day2-1" class="day-content">
+      <div class="day-header"><h3>Día 2 — Tren Superior · Supersets y mayor carga</h3><p>Superseries para mayor densidad y quema calórica</p></div>
+      <div class="ex-grid">
+        <div class="ex-card"><img class="ex-img" src="https://weighttraining.guide/wp-content/uploads/2016/10/cable-lat-pulldown-1.png" alt="Jalón" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Jalón al pecho + Remo cable (Superset)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10 + 10</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-0-1 c/u</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg entre supersets</span></div><div class="ex-tip">Sin descanso entre el jalón y el remo. Descanso 90 seg al completar los dos. Máxima quema calórica.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://homegymreview.co.uk/wp-content/uploads/2022/05/Dumbbell-Neutral-Grip-Bench-Press-header.jpg" alt="Press neutro" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Press mancuernas neutro + Face pull (Superset)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10 + 15</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-1-1 · 2-1-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span></div><div class="ex-tip">Press al máximo, luego face pull como antagonista. El hombro trabaja en dos planos seguros.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://homegymreview.co.uk/wp-content/uploads/2021/07/Cable-Lateral-Raise.jpg" alt="Elevaciones" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Elevaciones laterales cable — Drop set</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 12 + drop 10</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-2</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">75 seg</span></div><div class="ex-tip">Drop set en la última serie: 12 reps al máximo, bajá el peso y sin descanso hacé 10 reps más.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://weighttraining.guide/wp-content/uploads/2016/10/incline-dumbbell-bench-press.png" alt="Press inclinado" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Press inclinado + Remo una mano (Superset)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 10 + 10</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-1-1 c/u</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span></div><div class="ex-tip">Empuje + tracción sin descanso. Mayor quema calórica en la sesión.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://fitnessvolt.com/wp-content/uploads/2022/08/forearm-plank-exercise.jpg" alt="Plancha" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag iso">Isométrico</span></div><div class="ex-name">Plancha RKC (máxima tensión)</div><div class="ex-meta"><span class="ex-meta-label">Series</span><span class="ex-meta-val">4 × 30 seg intensos</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span></div><div class="ex-tip">Versión RKC: contraés glúteos, cuádriceps y abdomen al máximo simultáneamente. 30 seg intensos > 60 seg relajados.</div></div></div>
+      </div>
+      <div class="cardio-card"><div class="cardio-icon">🏃</div><div><h4>Cardio: Elíptica — Intervalos moderados</h4><p>25 min · Alternando intensidad cada 3 min</p></div></div>
+    </div>
+
+    <div id="day2-2" class="day-content">
+      <div class="day-header"><h3>Día 3 — Tren Inferior (Glúteo) · Pico del ciclo</h3><p>Mayor carga en cadena posterior — semanas 9–11</p></div>
+      <div class="ex-grid">
+        <div class="ex-card"><img class="ex-img" src="https://central.gymshark.com/cdn-cgi/image/width=960,format=auto,quality=80/https://central.gymshark.com/images/2021/April/how-to-barbell-hip-thrust-article-hero-mobile.jpg" alt="Hip thrust" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Hip thrust — Máximo del ciclo</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">5 × 8–10</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-3-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">2 min</span></div><div class="ex-tip">5 series esta fase. Pausa de 3 seg arriba. El peso más alto del ciclo completo. Si podés hablar, el peso está muy bajo.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://angrylion.fitness/wp-content/uploads/2021/09/seated-leg-curl-1.png" alt="Curl femoral" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Curl femoral — Drop set</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10 + drop 10</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-1-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span></div><div class="ex-tip">Drop set en la última serie. El excéntrico de 3 seg es lo más importante — no aceleres la bajada.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://weighttraining.guide/wp-content/uploads/2016/10/dumbbell-romanian-deadlift.png" alt="RDL" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Peso muerto rumano — Máximo del ciclo</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 8</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">4-1-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">2 min</span></div><div class="ex-tip">+10–15% vs fase 1. Podés usar barra libre esta fase. Pausa de 1 seg abajo en el punto de máximo estiramiento.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://homegymreview.co.uk/wp-content/uploads/2023/01/Single-Leg-Glute-Bridge.jpg" alt="Sumo" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Sentadilla sumo — Pausa profunda</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-2-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span></div><div class="ex-tip">2 seg de pausa en el fondo. El peso más alto del ciclo. Empujá el suelo y no el peso.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://homegymreview.co.uk/wp-content/uploads/2023/01/Single-Leg-Glute-Bridge.jpg" alt="Puente" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag iso">Isométrico</span></div><div class="ex-name">Puente glúteo una pierna + mancuerna</div><div class="ex-meta"><span class="ex-meta-label">Series</span><span class="ex-meta-val">3 × 45 seg/lado</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span></div><div class="ex-tip">Mancuerna pequeña sobre la cadera. La máxima dificultad de este ejercicio en el ciclo.</div></div></div>
+      </div>
+      <div class="cardio-card"><div class="cardio-icon">🚶</div><div><h4>Cardio: Caminata rápida en plano</h4><p>30 min · Recuperación activa</p></div></div>
+    </div>
+
+    <div id="day2-3" class="day-content">
+      <div class="day-header"><h3>Día 4 — Torso y Brazos · Máxima intensidad</h3><p>Supersets y drop sets en brazos</p></div>
+      <div class="ex-grid">
+        <div class="ex-card"><img class="ex-img" src="https://weighttraining.guide/wp-content/uploads/2018/11/cable-face-pull.png" alt="Face pulls" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Face pulls + Press inclinado (Superset)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 15 + 10</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-2-1 · 3-1-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span></div><div class="ex-tip">Face pull primero para "activar" el manguito rotador. Luego press con el hombro ya caliente y estable.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://weighttraining.guide/wp-content/uploads/2016/10/incline-dumbbell-bench-press.png" alt="Press inclinado" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Press inclinado + Pec deck (Superset)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 8 + 12</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-1-1 · 3-2-1</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">2 min</span></div><div class="ex-tip">Press pesado + aperturas para congestión total del pecho. Técnica pre-fatiga inversa.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://fitnessvolt.com/wp-content/uploads/2023/01/Barbell-Curl.jpg" alt="Curl" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Curl bíceps + Extensión tríceps (Superset)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10 + 10</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-3 c/u</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">75 seg</span></div><div class="ex-tip">Superset antagonista bíceps/tríceps. Sin descanso entre los dos. 75 seg entre supersets. Máxima quema calórica en brazos.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://fitnessvolt.com/wp-content/uploads/2022/08/tricep-rope-pushdown.jpg" alt="Tríceps" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Extensión tríceps overhead + Curl martillo (Superset)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 12 + 12</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-2 c/u</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">75 seg</span></div><div class="ex-tip">Extensión overhead para cabeza larga del tríceps. Curl martillo para braquial. Brutal para definición de brazos.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://www.mensjournal.com/wp-content/uploads/2021/03/dead-bug.jpg" alt="Dead bug" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag iso">Isométrico</span></div><div class="ex-name">Dead bug + Plancha lateral (Superset)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 12 + 40 seg/lado</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span></div><div class="ex-tip">Core completo sin descanso entre ejercicios. Finalizá la sesión quemando el abdomen.</div></div></div>
+      </div>
+      <div class="cardio-card"><div class="cardio-icon">🚴</div><div><h4>HIIT en bicicleta — Protocolo Tabata</h4><p>20 min · 20 seg al 100% / 10 seg descanso · 8 rondas × 3 bloques</p></div></div>
+    </div>
+
+    <div id="day2-4" class="day-content">
+      <div class="day-header"><h3>Día 5 — Full Body Bombeo · Congestión total</h3><p>Densidad máxima, menor descanso, mayor quema</p></div>
+      <div class="ex-grid">
+        <div class="ex-card"><img class="ex-img" src="https://www.anytimefitness.com/wp-content/uploads/2022/04/Leg-Press.jpg" alt="Prensa" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Prensa pies altos + Goblet squat (Superset)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 15 + 12</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-1 c/u</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span></div><div class="ex-tip">Prensa pesada seguida de goblet squat. El glúteo estará completamente congestionado.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://aleanlife.com/wp-content/uploads/2019/10/One-Arm-Dumbbell-Row-1024x702.jpg" alt="Remo" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Remo una mano + Jalón al pecho (Superset)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">4 × 10 + 12</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-2 c/u</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">90 seg</span></div><div class="ex-tip">Doble tracción para máxima bomba en la espalda.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://www.bodybuilding.com/images/2022/june/machine-fly-pec-deck-header-v2-960x540.jpg" alt="Pec deck" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Pec deck + Elevaciones frontales (Superset)</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 15 + 12</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">3-2-1 c/u</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">75 seg</span></div><div class="ex-tip">Congestión total de pecho y hombro anterior. Técnica pre-fatiga para mayor activación.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://homegymreview.co.uk/wp-content/uploads/2021/07/Cable-Lateral-Raise.jpg" alt="Elevaciones" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag fuerza">Fuerza</span></div><div class="ex-name">Elevaciones laterales — Triple drop set</div><div class="ex-meta"><span class="ex-meta-label">Series/Reps</span><span class="ex-meta-val">3 × 12 + 10 + 8</span><span class="ex-meta-label">Cadencia</span><span class="ex-meta-val">2-1-2</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">75 seg</span></div><div class="ex-tip">Triple drop set: 3 bajadas de peso consecutivas sin descanso. Deltoide medio completamente agotado.</div></div></div>
+        <div class="ex-card"><img class="ex-img" src="https://www.sideplank.org/wp-content/uploads/2019/05/side-plank-exercise.jpg" alt="Plancha" onerror="this.style.background='#e2e8f0';this.src=''"><div class="ex-body"><div class="ex-tags"><span class="tag iso">Isométrico</span></div><div class="ex-name">Plancha lateral + Plancha frontal (Circuit)</div><div class="ex-meta"><span class="ex-meta-label">Series</span><span class="ex-meta-val">3 × 40 seg/lado + 30 seg</span><span class="ex-meta-label">Descanso</span><span class="ex-meta-val">60 seg</span></div><div class="ex-tip">Circuito de core: plancha lateral derecha → plancha frontal → plancha lateral izquierda sin parar.</div></div></div>
+      </div>
+      <div class="cardio-card"><div class="cardio-icon">🚶</div><div><h4>Cardio final del ciclo: Caminata con máxima pendiente</h4><p>35 min · 12–15% inclinación · El cardio más duro del ciclo</p></div></div>
+    </div>
+
+    <div class="coach-nota">
+      <strong>Coach — Fase 3 (Semanas 9–12):</strong> Llegaste al pico. Las técnicas de drop set y superset son poderosas — usalas en 1–2 ejercicios por sesión, no en todos, para no quemarte. Si el cuerpo dice basta, escuchalo. La semana 12 es la descarga final: bajá el peso 40%, hacé 2 series por ejercicio y disfrutá los resultados de 12 semanas de trabajo.
+    </div>
+  </div><!-- end phase-2 -->
+
+</div><!-- end page -->
+
+<script>
+function showPhase(index) {
+  document.querySelectorAll('.phase-panel').forEach((p,i) => p.classList.toggle('active', i===index));
+  document.querySelectorAll('.phase-btn').forEach((b,i) => b.classList.toggle('active', i===index));
+}
+function showDay(phase, id) {
+  const panel = document.getElementById('phase-'+phase);
+  panel.querySelectorAll('.day-content').forEach(d => d.classList.remove('active'));
+  panel.querySelectorAll('.dtab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const tabs = document.getElementById('tabs-'+phase);
+  const dayIndex = parseInt(id.split('-')[1]);
+  tabs.querySelectorAll('.dtab')[dayIndex].classList.add('active');
+}
+function updateWeekLabel(sel, phase) {}
+</script>
+</body>
+</html>
